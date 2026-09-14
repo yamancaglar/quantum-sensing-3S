@@ -5,7 +5,7 @@ This document describes how we use Git on this project. Everyone on the team (an
 ## Branch structure
 
 ```
-main
+master
  └── dev
       ├── feature/adf4351-control
       ├── feature/mqtt-broker-setup
@@ -13,25 +13,25 @@ main
       └── feature/dashboard-ui
 ```
 
-### `main`
+### `master
 - Always in a **working, demo-able state**.
-- Nothing is committed directly to `main`. Changes only arrive via a Pull Request (PR) from `dev`.
+- Nothing is committed directly to `master`. Changes only arrive via a Pull Request (PR) from `dev`.
 - This is what we show the client/committee if asked "can we see the current state of the project?"
 - Tag milestones here as they happen, e.g. `v0.1-hardware-poc`, `v0.2-mqtt-integration`. Useful for reporting on project progress later.
 
 ### `dev`
 - The integration branch. Finished features land here first.
-- Should always build and run, but can be a little rougher than `main`.
-- Periodically merged into `main` once stable (e.g. before a demo, or at the end of a sprint).
+- Should always build and run, but can be a little rougher than `master`.
+- Periodically merged into `master` once stable (e.g. before a demo, or at the end of a sprint).
 
 ### `feature/xyz`
-- One branch per unit of work. Branch off `dev`, not `main`.
+- One branch per unit of work. Branch off `dev`, not `master`.
 - Naming: `feature/short-description` (e.g. `feature/photodiode-logging`, `feature/run-metadata-form`).
 - Merged back into `dev` via PR when done, then **deleted**. Don't let old feature branches pile up.
 
 ### `hotfix/xyz` (as needed)
 - For urgent fixes discovered close to a demo, when `dev` isn't in a mergeable state.
-- Branch off `main`, fix, then merge back into **both** `main` and `dev` so they don't drift apart.
+- Branch off ``, fix, then merge back into **both** `master` and `dev` so they don't drift apart.
 
 ## Day-to-day workflow
 
@@ -77,7 +77,7 @@ Good commit messages double as documentation — future 3S groups inheriting thi
 
 ## Pull requests
 
-- Even in a small team, get a second pair of eyes before merging into `dev` or `main`. This catches bugs early and matches how professional engineering teams operate — appropriate given this project's funding and client expectations.
+- Even in a small team, get a second pair of eyes before merging into `dev` or `master`. This catches bugs early and matches how professional engineering teams operate — appropriate given this project's funding and client expectations.
 - Keep PRs focused and reasonably small. A PR that touches five unrelated things is hard to review properly.
 - Write a short PR description: what does this change, and why?
 
@@ -97,6 +97,6 @@ To minimize friction:
 
 ## Repository hygiene
 
-- Keep `README.md` on `main` current — setup instructions, architecture overview, and how to run the project. This is part of the deliverable, not an afterthought, since this project is meant to serve as an educational platform for future groups.
+- Keep `README.md` on `master` current — setup instructions, architecture overview, and how to run the project. This is part of the deliverable, not an afterthought, since this project is meant to serve as an educational platform for future groups.
 - Don't commit secrets (API keys, credentials, `.env` files) — use `.env.example` as a template and add real `.env` files to `.gitignore`.
 - Don't commit large binary files or build artifacts — add them to `.gitignore` instead.
